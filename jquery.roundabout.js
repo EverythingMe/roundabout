@@ -495,9 +495,11 @@
 					top: ((factors.y * info.midStage.height + info.nudge.height) - factors.height / 2.0).toFixed(0) + "px",
 					width: factors.width + "px",
 					height: factors.height + "px",
-					opacity: (info.opacity.min + (info.opacity.diff * factors.scale)).toFixed(2),
+					//opacity: (info.opacity.min + (info.opacity.diff * factors.scale)).toFixed(2),
 					zIndex: Math.round(info.zValues.min + (info.zValues.diff * factors.z)),
-					fontSize: (factors.adjustedScale * data.startFontSize).toFixed(1) + "px"
+					//fontSize: (factors.adjustedScale * data.startFontSize).toFixed(1) + "px",
+					"-webkit-transform": "scale("+factors.scale+")",
+					"-webkit-filter": "grayscale("+((1-factors.scale) * 1.5)+")"
 				});
 			data.currentScale = factors.adjustedScale;
 
