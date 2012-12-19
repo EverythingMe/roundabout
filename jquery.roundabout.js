@@ -63,9 +63,9 @@
 		tilt: 0.0,
 		minZ: 100,
 		maxZ: 280,
-		minOpacity: 0.4,
+		minOpacity: 0.1,
 		maxOpacity: 1.0,
-		minScale: 0.4,
+		minScale: 0.1,
 		maxScale: 1.0,
 		duration: 600,
 		btnNext: null,
@@ -484,6 +484,7 @@
 
 			// correct
 			factors.scale = (factors.scale > 1) ? 1 : factors.scale;
+			//factors.scale = (factors.scale > 1) ? 1 : 0;
 			factors.adjustedScale = (info.scale.min + (info.scale.diff * factors.scale)).toFixed(4);
 			factors.width = (factors.adjustedScale * data.startWidth).toFixed(4);
 			factors.height = (factors.adjustedScale * data.startHeight).toFixed(4);
@@ -496,10 +497,9 @@
 					width: factors.width + "px",
 					height: factors.height + "px",
 					//opacity: (info.opacity.min + (info.opacity.diff * factors.scale)).toFixed(2),
+					opacity: factors.scale === 1 ? 1 : 0.1,
 					zIndex: Math.round(info.zValues.min + (info.zValues.diff * factors.z)),
-					//fontSize: (factors.adjustedScale * data.startFontSize).toFixed(1) + "px",
-					"-webkit-transform": "scale("+factors.scale+")",
-					"-webkit-filter": "grayscale("+((1-factors.scale) * 1.5)+")"
+					fontSize: (factors.adjustedScale * data.startFontSize).toFixed(1) + "px"
 				});
 			data.currentScale = factors.adjustedScale;
 
